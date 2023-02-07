@@ -1,23 +1,31 @@
 <template>
-    <form>
-        <label>Username: </label>
+    <div class="container">
+        <h1>Login</h1>
+        <form>
+        <label>Username</label> <br> 
         <input 
+            class="input"
             type="text"
             placeholder="username"
             v-model = 'username'
             required
         >
-        <br>
-        <label>Password: </label>
+        <br> <br>
+        <label>Password</label> <br> 
         <input 
+            class="input"
             type="password"
             v-model = 'password'
             placeholder="password"
             required
         >
-        <br>
-        <button type="button" v-on:click="login()">Login</button>
+        <br> <br>
+        <button type="button" class="button" v-on:click="login()">Login</button>
+        <button type="button" class="button" v-on:click="$router.push('/')">Home</button>
+
     </form>
+    </div>
+
 </template>
 
 <script>
@@ -40,15 +48,30 @@
                 })
                 .then((res) => {
                     if(res.status === 200) {
-                        localStorage.setItem('token', res.data.jwt);
-                        console.log(res.data.jwt);
-                        this.$router.go('/locations');
+                        try{
+                            localStorage.setItem('token', res.data.jwt);
+                            console.log(res.data.jwt);
+                            console.log('success');
+                            this.$router.push('/locations')
+                        } catch{
+                            console.log('failed to store in localStorage');
+                        }
+ 
+                        //this.$router.push('/locations');
                     }
                     if(res.status === 401) {
                         console.log('wrong credientials!')
                     }
                 })
+                .catch((res) => {
+                    alert('Wrong credentials')
+                })
             },  
         }
     }
 </script>
+
+<style>
+@import './css/login.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+</style>

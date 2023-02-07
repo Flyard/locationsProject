@@ -1,23 +1,35 @@
 <template>
-    <form>
-        <label>Username: </label>
+    <div class="container">
+        <h1>Register</h1>
+        <form>
+        <label>Username</label> <br> 
         <input 
+            class="input"
             type="text"
-            v-model = 'username'
             placeholder="username"
+            v-model = 'username'
             required
         >
-        <br>
-        <label>Password: </label>
+        <br> <br>
+        <label>Password</label> <br> 
         <input 
+            class="input"
             type="password"
             v-model = 'password'
             placeholder="password"
             required
         >
-        <br>
-        <button type="submit" v-on:click="register()">Register</button>
+        <br> <br>
+        <button type="button" class="button" v-on:click="register()">Register</button>
+        <button type="button" class="button" v-on:click="$router.push('/')">Home</button>
+
     </form>
+    <p>Already have an account?</p>
+    <button type="button" class="button" v-on:click="$router.push('/login')">Login</button>
+    </div>
+
+
+
 </template>
 
 <script>
@@ -38,9 +50,18 @@
                     username: this.username, 
                     password: this.password
                 })
-                console.warn(sentData);
+                .then((res) => {$router.push('/login')})
+                .catch((res) => {
+                    alert('User already exists')
+                })
+
             }
         }
     }
 
 </script>
+
+<style>
+@import './css/login.css';
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600&display=swap');
+</style>
