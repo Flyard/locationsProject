@@ -1,6 +1,9 @@
 * {
     font-family: 'Poppins', sans-serif;
 }
+body {
+    background: linear-gradient(to right,#eacda3 , #d6ae7b);
+}
 
 .button {
     border-radius: 8px;

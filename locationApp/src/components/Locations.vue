@@ -3,33 +3,28 @@
         <div class="first_container">
             <h1 class="title">All locations</h1>
             <nav class="navbar">
-                <button type="button" class="button" v-on:click="displayLocationsTittle()">Log data</button>
                 <button type="button" class="button" v-on:click="logout()">Logout</button>
             </nav>
         </div>
-
-        <div class="second_container" v-for="values in locations">
-            <LocationsCards class="locationCard" 
-                :_id="values._id"
-                :filmType ="values.filmType"
-                :filmProducerName="values.filmProducerName"
-                :endDate="values.endDate"
-                :filmName="values.filmName"
-                :district="values.district"
-                :sourcelocationId="values.sourcelocationId"
-                :filmDirectorName="values.filmDirectorName"
-                :address="values.address"
-                :startDate = "values.startDate"
-                :year="values.year"
-            />
+        <div class="cardContainer"> 
+            <div class="second_container" v-for="locations in locations">
+                <LocationsCards class="locationCard" 
+                    :_id="locations._id"
+                    :filmType ="locations.filmType"
+                    :filmProducerName="locations.filmProducerName"
+                    :endDate="locations.endDate"
+                    :filmName="locations.filmName"
+                    :district="locations.district"
+                    :sourcelocationId="locations.sourcelocationId"
+                    :filmDirectorName="locations.filmDirectorName"
+                    :address="locations.address"
+                    :startDate = "locations.startDate"
+                    :year="locations.year" 
+                />
+            </div>
         </div>
-
-
+        <p v-if="loading" class="loading">Loading...</p>
     </div>
-
-
-
-
 </template>
 
 <script>
@@ -46,20 +41,17 @@ import LocationsCards from './LocationsCards.vue';
         return {
             token: "",
             index: 0,
-            locations: {
-                _id: "",
-                filmType: "",
-                filmProducerName: "",
-                endDate: "",
-                filmName: "",
-                district: "",
-                sourcelocationId: "",
-                filmDirectorName: "",
-                address: "",
-                startDate: "",
-                year: ""
-            },
+            locations: [],
+            page: 1,
+            loading: false
         };
+    },
+    created() {
+        this.fetchData().then(totalItems => this.totalItems = totalItems);
+        window.addEventListener('scroll', this.handleScroll);
+    },
+    beforeDestroy(){
+        window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
         logout() {
@@ -71,25 +63,43 @@ import LocationsCards from './LocationsCards.vue';
                 console.log("error");
             }
         },
-        async displayLocationsTittle() {
-            const url = "http://localhost:3000/locations";
+        async fetchData() {
             this.token = localStorage.getItem("token");
+            this.loading = true;
+            let limit = 20;
+            let offset = 0;
+            let allData = [];
+            
+            while(true) {
+                const url = `http://localhost:3000/locations?limit=${limit}&offset=${offset}`;
             let getLocations = await axios.get(url, {
                 headers: {
                     "Authorization": "Bearer " + this.token
                 }
             })
                 .then((res) => {
-                this.locations = res.data;
+                    allData = allData.concat(res.data);
+                    offset +=limit;
+                    return res.data.totalItems;
             })
                 .catch((res) => {
                     if(localStorage.getItem("token") === null) {
                         alert('You are not authentificated!')
                     }
                 })
+                this.locations = allData;
+            this.loading = false;
+            }
+
+
         },
-        doClick() {
-            console.log('click')
+        handleScroll() {
+            if(this.loading) return;
+            const bottom = document.documentElement.scrollHeight - window.scrollY === window.innerHeight;
+            if (bottom && this.locations.length < this.totalItems) {
+                this.page += 1;
+                this.fetchData();
+            }
         }
     },
 

@@ -1,6 +1,11 @@
 * {
     font-family: 'Poppins', sans-serif;
+
 }
+body {
+    background: linear-gradient(to right,#eacda3 , #d6ae7b);
+}
+
 
 .button {
     border-radius: 8px;
@@ -44,16 +49,23 @@
     margin: 10px;
 }
 
-.big_container {
-    background: linear-gradient(to right,#eacda3 , #d6ae7b);
-    height: 100vh;
-    width: 100vw;
-    margin: 0;
- 
-}
-
 .first_container {
     display: flex;
     justify-content: space-between;
+    position: sticky;
+    top: 0;
+    background: linear-gradient(to right,#eacda3 , #d6ae7b);
 }
 
+.second_container {
+    width: 100%;
+  }
+  
+
+.loading {
+    justify-content: center;
+}
+.cardContainer {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}

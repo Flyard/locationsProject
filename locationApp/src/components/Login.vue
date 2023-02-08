@@ -51,17 +51,12 @@
                     if(res.status === 200) {
                         try{
                             localStorage.setItem('token', res.data.jwt);
-                            console.log(res.data)
-                            console.log('success');
                             this.$router.push('/locations')
                         } catch{
                             console.log('failed to store in localStorage');
                         }
  
                         //this.$router.push('/locations');
-                    }
-                    if(res.status === 401) {
-                        console.log('wrong credientials!')
                     }
                 })
                 .catch((res) => {

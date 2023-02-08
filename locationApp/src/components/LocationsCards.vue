@@ -16,12 +16,11 @@
             <button type="button" class="card-button" v-on:click="doModify()">Modify</button>
             <button type="button" class="card-button" v-on:click="doDelete()">Delete</button>
         </div>
-
-
-      </div>
-     
-      
+      </div> 
     </div>
+
+
+
   </template>
   
   <script>
@@ -51,12 +50,24 @@
     methods: {
         toogleDetails() {
             this.showDetails = !this.showDetails;
-            console.log(url+'/'+this._id);
         },
         async doDelete() {
-            let req = await axios.delete(url+'/'+this._id)
-                .then((res) => {alert('Deleted')})
-                .catch((res) => {console.log('Not deleted')})
+            this.token = localStorage.getItem("token");
+            let req = await axios.delete(url+'/'+this._id, {
+              headers: {
+                    "Authorization": "Bearer " + this.token
+                }
+            })
+ 
+                .then((res) => {
+                  alert('Deleted');
+                  window.location.reload();
+                })
+                .catch((error) => {
+                  if(error.response.status === 403) {
+                    alert('You are not authorized to do this action.')
+                  }
+                })
         }
     }
 
