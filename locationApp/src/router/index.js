@@ -28,6 +28,21 @@ const router = createRouter({
       path: '/landing',
       name: 'landing',
       component: () => import('../components/Landing.vue')
+    },
+    {
+      path: '/add',
+      name: 'addLocation',
+      component: () => import('../components/AddLocation.vue')
+    },
+    {
+      path: '/edit',
+      name: 'editAddProp',
+      component: () => import('../components/EditAddProp.vue')
+    },
+    {
+      path: '/editprop',
+      name: 'edit',
+      component: () => import('../components/Edit.vue')
     }
   ]
 })

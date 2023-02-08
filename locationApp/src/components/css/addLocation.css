@@ -1,0 +1,57 @@
+body {
+    background: linear-gradient(to right,#eacda3 , #d6ae7b);
+    font-family: 'Poppins', sans-serif;
+}
+.main_container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.input {
+    border-radius: 8px;
+    border-style: none;
+    height: 30px;
+}
+
+.h1 {
+    font-weight: 600;
+}
+
+.button {
+    border-radius: 8px;
+    border-style: none;
+    border: none;
+    background: none;
+    box-sizing: border-box;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 14px;
+    font-weight: 500;
+    height: 40px;
+    line-height: 20px;
+    list-style: none;
+    margin: 0;
+    outline: none;
+    padding: 10px 16px;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    transition: color 100ms;
+    vertical-align: baseline;
+    user-select: none;
+    -webkit-user-select: none;
+    touch-action: manipulation;
+    transition: 10ms;
+}
+
+.button:hover {
+    color: white;
+    transition:100ms
+}
+
+.button-div {
+    display: flex;
+    justify-content: space-around;
+}

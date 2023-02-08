@@ -13,13 +13,11 @@
         <p>District: {{ district }}</p>
         <p>Source location ID: {{ sourcelocationId }}</p>
         <div class="button-align">
-            <button type="button" class="card-button" v-on:click="doModify()">Modify</button>
+            <button type="button" class="card-button" v-on:click="goEdit()">Edit</button>
             <button type="button" class="card-button" v-on:click="doDelete()">Delete</button>
         </div>
       </div> 
     </div>
-
-
 
   </template>
   
@@ -44,10 +42,16 @@
     data() {
         return {
             showDetails: false,
+            editing: false
         }
     },
 
     methods: {
+        goEdit() {
+          localStorage.setItem('locationId', this._id);
+          console.log('added')
+          this.$router.push('/edit')
+        },
         toogleDetails() {
             this.showDetails = !this.showDetails;
         },
@@ -68,7 +72,8 @@
                     alert('You are not authorized to do this action.')
                   }
                 })
-        }
+        },
+
     }
 
   };

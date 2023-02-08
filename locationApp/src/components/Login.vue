@@ -51,6 +51,7 @@
                     if(res.status === 200) {
                         try{
                             localStorage.setItem('token', res.data.jwt);
+                            localStorage.setItem('user', this.username);
                             this.$router.push('/locations')
                         } catch{
                             console.log('failed to store in localStorage');

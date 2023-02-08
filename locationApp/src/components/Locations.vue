@@ -3,6 +3,7 @@
         <div class="first_container">
             <h1 class="title">All locations</h1>
             <nav class="navbar">
+                <button type="button" class="button" v-on:click="this.$router.push('/add')">Add a location</button>
                 <button type="button" class="button" v-on:click="logout()">Logout</button>
             </nav>
         </div>
@@ -43,7 +44,8 @@ import LocationsCards from './LocationsCards.vue';
             index: 0,
             locations: [],
             page: 1,
-            loading: false
+            loading: false,
+
         };
     },
     created() {
@@ -84,7 +86,7 @@ import LocationsCards from './LocationsCards.vue';
             })
                 .catch((res) => {
                     if(localStorage.getItem("token") === null) {
-                        alert('You are not authentificated!')
+                        this.$router.push('/login');
                     }
                 })
                 this.locations = allData;
@@ -100,7 +102,8 @@ import LocationsCards from './LocationsCards.vue';
                 this.page += 1;
                 this.fetchData();
             }
-        }
+        },
+
     },
 
 } 
