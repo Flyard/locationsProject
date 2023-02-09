@@ -71,7 +71,6 @@
 const url = 'https://locations-project-back.onrender.com/locations/'
 
 import axios from 'axios';
-import { setTheUsername } from 'whatwg-url';
 export default {
     data () {
         return {
