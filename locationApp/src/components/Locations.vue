@@ -73,7 +73,7 @@ import LocationsCards from './LocationsCards.vue';
             let allData = [];
             
             while(true) {
-                const url = `http://localhost:3000/locations?limit=${limit}&offset=${offset}`;
+                const url = `https://locations-project-back.onrender.com/locations?limit=${limit}&offset=${offset}`;
             let getLocations = await axios.get(url, {
                 headers: {
                     "Authorization": "Bearer " + this.token

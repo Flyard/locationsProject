@@ -23,7 +23,7 @@
   
   <script>
   import axios from 'axios'
-  const url = 'http://localhost:3000/locations'
+  const url = 'https://locations-project-back.onrender.com/locations'
   export default {
     name: 'LocationsCards',
     props: [

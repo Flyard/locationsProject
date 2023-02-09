@@ -68,7 +68,7 @@
 </template>
 
 <script>
-const url = 'http://localhost:3000/locations/'
+const url = 'https://locations-project-back.onrender.com/locations/'
 import axios from 'axios';
 export default {
     data () {

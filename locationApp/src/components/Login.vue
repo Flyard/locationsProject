@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    const url = 'http://localhost:3000/users/login';
+    const url = 'https://locations-project-back.onrender.com/users/login';
     import axios from 'axios';
 
     export default {

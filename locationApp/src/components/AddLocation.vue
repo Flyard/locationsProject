@@ -68,8 +68,8 @@
 </template>
 
 <script>
-const url = 'http://localhost:3000/locations/'
-const userUrl = 'http://localhost:3000/users/me'
+const url = 'https://locations-project-back.onrender.com/locations/'
+
 import axios from 'axios';
 import { setTheUsername } from 'whatwg-url';
 export default {
@@ -104,7 +104,7 @@ export default {
                     district : this.district,
                     sourcelocationId : this.sourcelocationId,
                     filmdDirectorName : this.filmDirectorName,
-                    "address" : this.address,
+                    address : this.address,
                     startDate : this.startDate,
                     year : this.year
                 }
