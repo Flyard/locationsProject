@@ -1,4 +1,7 @@
-## ⚠️ Work still in progress - Last update: 08/02/23
+## ⚠️ Work still in progress - Last update: 09/02/23
+Known issues: 
+- Getting alert "User already exists" on Register. This message is displayed even though your user was actually created.
+- Not getting any error when trying to Edit a location as a `user`, but still getting a 401 (Not Authorized)
 
 ## 📚 Description
 ---
@@ -9,32 +12,6 @@ There are 2 roles: **user** and **admin**
 - **User**: it is the default role when signing up. You can only display and read details about the selected locations.
 - Admin: You have the same priviledges as user, but you can Create, Read, Update and Delete locations. 
 
-## 🧑🏾‍💻 Installation
+## 🔗 Link to website
 ---
-- Clone the project to your computer. 
-```bash
-git clone <my-repo>
-```
-- In the `LocationsProject` folder, you will find the backend of the app. To run it, first run:
-```bash
-npm install
-```
-It should install all the dependencies I used for the project.
-
-### Running the Express server
-
-Use the following: 
-```bash
-node index.js
-```
-### Running the webpage
-
-Then, navigate inside the folder, using :
-```bash
-cd locationApp
-```
-And run the following command:
-```bash
-npm run dev
-```
-
+https://location-project.vercel.app/
