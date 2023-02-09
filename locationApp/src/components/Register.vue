@@ -51,7 +51,8 @@
                     password: this.password
                 })
                 .then((res) => {$router.push('/login')})
-                .catch((res) => {
+                .catch((error) => {
+                    
                     alert('User already exists')
                 })
 
