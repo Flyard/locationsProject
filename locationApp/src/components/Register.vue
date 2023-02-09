@@ -52,8 +52,9 @@
                 })
                 .then((res) => {$router.push('/login')})
                 .catch((error) => {
-                    
-                    alert('User already exists')
+                    if(error.response.status === 401){
+                        alert(error.response.status)
+                    }
                 })
 
             }
