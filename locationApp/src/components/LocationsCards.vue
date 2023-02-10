@@ -13,8 +13,8 @@
         <p>District: {{ district }}</p>
         <p>Source location ID: {{ sourcelocationId }}</p>
         <div class="button-align">
-            <button type="button" class="card-button" v-on:click="goEdit()">Edit</button>
-            <button type="button" class="card-button" v-on:click="doDelete()">Delete</button>
+            <button type="button" class="card-button" v-on:click ="goEdit()" v-if="checkAdmin()">Edit</button>
+            <button type="button" class="card-button" v-on:click="doDelete()" v-if="checkAdmin()">Delete</button>
         </div>
       </div> 
     </div>
@@ -42,14 +42,17 @@
     data() {
         return {
             showDetails: false,
-            editing: false
+            editing: false,
         }
     },
 
     methods: {
+        checkAdmin() {
+          if(localStorage.getItem("role") === "admin") return true;
+          else return false;
+        },
         goEdit() {
           localStorage.setItem('locationId', this._id);
-          console.log('added')
           this.$router.push('/edit')
         },
         toogleDetails() {

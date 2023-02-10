@@ -50,13 +50,10 @@
                     username: this.username, 
                     password: this.password
                 })
-                .then((res) => {$router.push('/login')})
-                .catch((error) => {
-                    if(error.response.status === 401){
-                        alert(error.response.status)
-                    }
+                .then((res) => {
+                    alert('User created. Please login into your account')
+                    this.$router.push('/login')
                 })
-
             }
         }
     }

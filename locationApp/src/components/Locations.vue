@@ -3,7 +3,7 @@
         <div class="first_container">
             <h1 class="title">All locations</h1>
             <nav class="navbar">
-                <button type="button" class="button" v-on:click="this.$router.push('/add')">Add a location</button>
+                <button type="button" class="button" v-on:click="this.$router.push('/add')" v-if="checkAdmin()">Add a location</button>
                 <button type="button" class="button" v-on:click="logout()">Logout</button>
             </nav>
         </div>
@@ -56,9 +56,13 @@ import LocationsCards from './LocationsCards.vue';
         window.removeEventListener('scroll', this.handleScroll);
     },
     methods: {
+        checkAdmin() {
+            if(localStorage.getItem("role") === "admin") return true;
+            else return false;
+        },
         logout() {
             try {
-                localStorage.removeItem("token");
+                localStorage.clear();
                 this.$router.push("/");
             }
             catch {

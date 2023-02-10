@@ -2,6 +2,14 @@
     <div class="main_container">
         <h1>Add a location</h1>
         <form>
+            <label>Film name: </label> <br>
+            <input 
+                class="input"
+                type="text"
+                placeholder="Clem"
+                v-model='filmName'
+            >
+            <br> <br>
             <label>Type: </label> <br>
             <input 
                 class="input"
@@ -21,7 +29,7 @@
             <label>Year: </label> <br>
             <input 
                 class="input"
-                type="text"
+                type="number"
                 placeholder="2020"
                 v-model='year'
             >
@@ -29,7 +37,7 @@
             <label>Start date:  </label> <br>
             <input 
                 class="input"
-                type="text"
+                type="date"
                 placeholder="2020-09-04"
                 v-model='startDate'
             >
@@ -37,7 +45,7 @@
             <label>End date: </label> <br>
             <input 
                 class="input"
-                type="text"
+                type="date"
                 placeholder="2020-09-08"
                 v-model='endDate'
             >
@@ -99,15 +107,14 @@ export default {
                 body: {
                     filmName: this.filmName,
                     filmProducerName : this.filmProducerName,
-                    endDate : this.endDate,
+                    endDate : Date(this.endDate),
                     district : this.district,
                     sourcelocationId : this.sourcelocationId,
                     filmdDirectorName : this.filmDirectorName,
                     address : this.address,
-                    startDate : this.startDate,
+                    startDate : Date(this.startDate),
                     year : this.year
                 }
-
             }, {headers})
 
                 .then((res) => {
@@ -115,21 +122,6 @@ export default {
                     console.log(res.data)
                     this.$router.push('/locations');
                 })
-                .catch((error) => {
-                    alert('Error code: ' + error.response.status);
-                });
-
-            let user = await axios.get(userUrl, {
-                headers: {
-                    "Authorization": "Bearer " + this.token
-                },
-                username: this.username
-            })
-                .then((res) => {
-                    console.log(res.data);
-                })
-                .catch((error) => {console.log(error.response.status)})
-
         }
     }
 }

@@ -21,7 +21,7 @@
             <label>Year: </label> <br>
             <input 
                 class="input"
-                type="text"
+                type="Number"
                 placeholder="2020"
                 v-model='year'
             >
@@ -29,7 +29,7 @@
             <label>Start date:  </label> <br>
             <input 
                 class="input"
-                type="text"
+                type="date"
                 placeholder="2020-09-04"
                 v-model='startDate'
             >
@@ -37,7 +37,7 @@
             <label>End date: </label> <br>
             <input 
                 class="input"
-                type="text"
+                type="date"
                 placeholder="2020-09-08"
                 v-model='endDate'
             >
@@ -94,11 +94,12 @@ export default {
             this.$router.push('/locations');
         },
         async fetchData() {
+            this.token = localStorage.getItem("token");
             this.id = localStorage.getItem("locationId");
             const headers = {
-                    'Authorization': 'Bearer ' + this.token
+                    "Authorization": "Bearer " + this.token
                 }
-            let req = await axios.put(url+this.id, {
+            let req = await axios.patch(url+this.id, {
                 body: {
                     filmName: this.filmName,
                     filmProducerName : this.filmProducerName,
@@ -115,6 +116,7 @@ export default {
             {headers})
             .then((res) => {
                 console.log(res.data);
+                alert('Location edited !')
             })
             .catch((error) => console.error(error.response.status))
             await localStorage.removeItem("locationId");
