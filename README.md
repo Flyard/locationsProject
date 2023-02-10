@@ -10,7 +10,7 @@ To get access to the locations, you must be logged in, so you must create an acc
 
 There are 2 roles: **user** and **admin**  
 - **User**: it is the default role when signing up. You can only display and read details about the selected locations.
-- Admin: You have the same priviledges as user, but you can Create, Read, Update and Delete locations. 
+- **Admin**: You have the same priviledges as user, but you can Create, Read, Update and Delete locations. 
 
 ## 🔗 Link to website
 ---
