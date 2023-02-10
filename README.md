@@ -1,7 +1,7 @@
-## ⚠️ Work still in progress - Last update: 09/02/23
+## ⚠️ Work still in progress - Last update: 10/02/23
 Known issues: 
-- Getting alert "User already exists" on Register. This message is displayed even though your user was actually created.
-- Not getting any error when trying to Edit a location as a `user`, but still getting a 401 (Not Authorized)
+- ~Getting alert "User already exists" on Register. This message is displayed even though your user was actually created.~ Corrected 
+- ~Not getting any error when trying to Edit a location as a `user`, but still getting a 401 (Not Authorized)~ Corrected
 
 ## 📚 Description
 **LocationsProject** is a web application made to display information about movies that were shot in Paris. It uses an API on Express / NodeJS for the backend, and VueJs/CSS for the frontend.
@@ -13,3 +13,11 @@ There are 2 roles: **user** and **admin**
 
 ## 🔗 Link to website
 https://location-project.vercel.app/
+
+## Credentials
+
+For `user`: 
+   Username: user
+   Password: user
+
+
