@@ -30,6 +30,7 @@
 
 <script>
     const url = 'https://locations-project-back.onrender.com/users/login';
+
     import axios from 'axios';
 
     export default {
@@ -51,7 +52,7 @@
                     if(res.status === 200) {
                         try{
                             localStorage.setItem('token', res.data.jwt);
-                            localStorage.setItem('user', this.username);
+                            localStorage.setItem('username', this.username);
                             this.$router.push('/locations')
                         } catch{
                             console.log('failed to store in localStorage');
@@ -62,6 +63,18 @@
                 })
                 .catch((res) => {
                     alert('Wrong credentials')
+                })
+
+                let getUser = await axios.get('https://locations-project-back.onrender.com/users/me', {
+                    headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("token")
+                },
+                    username: this.username
+                })
+                .then((res) => {
+                    console.log(res.data.role)
+                    localStorage.setItem("role", res.data.role);
+    
                 })
             },  
         }
