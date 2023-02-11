@@ -1,4 +1,4 @@
-## ⚠️ Work still in progress - Last update: 10/02/23
+## ✅ Work done - Last update: 10/02/23
 Known issues: 
 - ~Getting alert "User already exists" on Register. This message is displayed even though your user was actually created.~ Corrected 
 - ~Not getting any error when trying to Edit a location as a `user`, but still getting a 401 (Not Authorized)~ Corrected
