@@ -31,6 +31,7 @@
             lessOffset()
             fetchData()
         }">Previous</button>
+            <p>{{ page }}</p>
         <button type="button" class="button" v-on:click="() => {
             addOffset()
             fetchData()
@@ -75,11 +76,14 @@ import LocationsCards from './LocationsCards.vue';
 
         addOffset() {
             this.offset += 10;
+            this.page++;
         },
 
         lessOffset() {
             this.offset -= 10;
             if(this.offset < 0) {this.offset = 0}
+            this.page--;
+            if(this.page < 0) {this.page = 1}
         },
 
         logout() {
@@ -96,7 +100,7 @@ import LocationsCards from './LocationsCards.vue';
             let limit = 24;
             let offset = this.offset;
 
-            const url = `https://locations-project-back.onrender.com/locations?limit=${limit}&offset=${offset}`;
+            const url = `https://locationsproject-backend.onrender.com/locations?limit=${limit}&offset=${offset}`;
             let getLocations = await axios.get(url, {
                 headers: {
                     "Authorization": "Bearer " + this.token

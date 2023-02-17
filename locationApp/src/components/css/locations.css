@@ -72,6 +72,6 @@ body {
 
 .offsetButtons {
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: row;
+    justify-content: space-around;
 }

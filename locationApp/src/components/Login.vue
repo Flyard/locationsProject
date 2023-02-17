@@ -29,7 +29,7 @@
 </template>
 
 <script>
-    const url = 'https://locations-project-back.onrender.com/users/login';
+    const url = 'https://locationsproject-backend.onrender.com/users/login';
 
     import axios from 'axios';
 
@@ -65,7 +65,7 @@
                     alert('Wrong credentials')
                 })
 
-                let getUser = await axios.get('https://locations-project-back.onrender.com/users/me', {
+                let getUser = await axios.get('https://locationsproject-backend.onrender.com/users/me', {
                     headers: {
                     "Authorization": "Bearer " + localStorage.getItem("token")
                 },

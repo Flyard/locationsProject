@@ -68,7 +68,7 @@
 </template>
 
 <script>
-const url = 'https://locations-project-back.onrender.com/locations/'
+const url = 'https://locationsproject-backend.onrender.com/locations/'
 import axios from 'axios';
 export default {
     data () {

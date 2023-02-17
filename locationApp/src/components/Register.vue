@@ -33,7 +33,7 @@
 </template>
 
 <script>
-    const url = 'https://locations-project-back.onrender.com/users/register';
+    const url = 'https://locationsproject-backend.onrender.com/users/register';
     import axios from 'axios';
 
     export default {
