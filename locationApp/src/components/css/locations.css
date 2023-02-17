@@ -69,3 +69,9 @@ body {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 }
+
+.offsetButtons {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
