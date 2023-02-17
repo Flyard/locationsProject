@@ -79,6 +79,7 @@ import LocationsCards from './LocationsCards.vue';
 
         lessOffset() {
             this.offset -= 10;
+            if(this.offset < 0) {this.offset = 0}
         },
 
         logout() {
