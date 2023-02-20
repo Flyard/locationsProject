@@ -68,14 +68,14 @@
 </template>
 
 <script>
-const url = 'https://locationsproject-backend.onrender.com/locations/'
+const url = 'https://locationsproject-backend.onrender.com/locations/';
 import axios from 'axios';
 export default {
     data () {
         return {
             _id: 0,
             filmType: '',
-            filmProducerName:'',
+            filmProducerName: '',
             endDate: '',
             filmName: '',
             district: '',
@@ -84,7 +84,7 @@ export default {
             address: '',
             startDate: '',
             year: '',
-            username: ''
+            username: '',
         }
     },
 
@@ -94,33 +94,36 @@ export default {
             this.$router.push('/locations');
         },
         async fetchData() {
-            this.token = localStorage.getItem("token");
-            this.id = localStorage.getItem("locationId");
-            const headers = {
-                    "Authorization": "Bearer " + this.token
-                }
-            let req = await axios.patch(url+this.id, {
-                body: {
-                    filmName: this.filmName,
-                    filmProducerName : this.filmProducerName,
-                    endDate : this.endDate,
-                    district : this.district,
-                    sourcelocationId : this.sourcelocationId,
-                    filmdDirectorName : this.filmDirectorName,
-                    address : this.address,
-                    startDate : this.startDate,
-                    year : this.year
-                },
-                
-            },
-            {headers})
-            .then((res) => {
-                console.log(res.data);
-                alert('Location edited !')
-            })
-            .catch((error) => console.error(error.response.status))
-            await localStorage.removeItem("locationId");
-        }
+    this.token = localStorage.getItem("token");
+    const locationId = localStorage.getItem("locationId");
+    const headers = {
+        "Authorization": "Bearer " + this.token
+    }
+
+    const existingData = await axios.get(url + locationId,{headers})
+
+    const updatedData = {
+        ...existingData.data,
+        filmName: this.filmName ? this.filmName : existingData.data.filmName,
+        filmType: this.filmType ? this.filmType : existingData.data.filmType,
+        filmProducerName : this.filmProducerName ? this.filmProducerName : existingData.data.filmProducerName,
+        endDate : this.endDate ? this.endDate : existingData.data.endDate,
+        district : this.district ? this.district : existingData.data.district,
+        sourcelocationId : this.sourcelocationId ? this.sourcelocationId : existingData.data.sourcelocationId,
+        filmdDirectorName : this.filmDirectorName ? this.filmDirectorName : existingData.data.filmdDirectorName,
+        address : this.address ? this.address : existingData.data.address,
+        startDate : this.startDate ? this.startDate : existingData.data.startDate,
+        year : this.year ? this.year : existingData.data.year
+    }
+    axios.patch(url + locationId, updatedData, { headers })
+        .then((res) => {
+            console.log(this.year);
+            console.log(res.data);
+            alert('Location edited !')
+        })
+        .catch((error) => console.error(error.response.status))
+    localStorage.removeItem("locationId");
+}
     }
 
 }

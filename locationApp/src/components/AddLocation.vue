@@ -76,7 +76,7 @@
 </template>
 
 <script>
-const url = 'https://locationsproject-backend.onrender.com/locations/'
+const url = 'https://locationsproject-backend.onrender.com/locations/';
 
 import axios from 'axios';
 export default {
@@ -104,17 +104,17 @@ export default {
                     "Authorization": "Bearer " + this.token
                 }
             let req = await axios.post(url, {
-                body: {
+                
                     filmName: this.filmName,
                     filmProducerName : this.filmProducerName,
-                    endDate : Date(this.endDate),
+                    endDate : new Date(this.endDate),
                     district : this.district,
                     sourcelocationId : this.sourcelocationId,
-                    filmdDirectorName : this.filmDirectorName,
+                    filmDirectorName : this.filmDirectorName,
                     address : this.address,
-                    startDate : Date(this.startDate),
+                    startDate : new Date(this.startDate),
                     year : this.year
-                }
+                
             }, {headers})
 
                 .then((res) => {
