@@ -120,6 +120,7 @@ export default {
             console.log(this.year);
             console.log(res.data);
             alert('Location edited !')
+            this.$router.push('/locations');
         })
         .catch((error) => console.error(error.response.status))
     localStorage.removeItem("locationId");

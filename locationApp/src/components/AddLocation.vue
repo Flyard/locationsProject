@@ -119,7 +119,6 @@ export default {
 
                 .then((res) => {
                     alert('Location successfully added !');
-                    console.log(res.data)
                     this.$router.push('/locations');
                 })
         }

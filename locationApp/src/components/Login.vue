@@ -72,7 +72,6 @@
                     username: this.username
                 })
                 .then((res) => {
-                    console.log(res.data.role)
                     localStorage.setItem("role", res.data.role);
     
                 })

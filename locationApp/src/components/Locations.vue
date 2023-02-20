@@ -107,7 +107,7 @@ import LocationsCards from './LocationsCards.vue';
                 }
             })
                 .then((res) => {
-                    this.locations = res.data;                       
+                    this.locations = res.data;
             })
                 .catch((res) => {
                     if(localStorage.getItem("token") === null) {
